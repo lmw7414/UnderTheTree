@@ -14,6 +14,8 @@ public class MessageComment {
 
     @Id
     private Long id;
+
+    @Column(nullable = false)
     private String content;
 
     @ManyToOne(optional = false)
@@ -24,7 +26,7 @@ public class MessageComment {
     @JoinColumn(name = "user_email")
     private UserAccount user;
 
-    @Column(name = "registered_at")
+    @Column(name = "registered_at", nullable = false)
     private LocalDateTime registeredAt;
 
     @Column(name = "updated_at")

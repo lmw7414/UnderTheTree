@@ -24,8 +24,14 @@ public class UserAccount {
 
     @Id
     private String email;
+
+    @Column(nullable = false, name = "nickname")
     private String nickname;
+
+    @Column(nullable = false, name = "password")
     private String password;
+
+    @Column(columnDefinition = "int default 5")
     private int chance;
 
     @ToString.Exclude

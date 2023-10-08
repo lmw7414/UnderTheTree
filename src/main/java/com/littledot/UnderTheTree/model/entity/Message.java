@@ -24,7 +24,9 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String title;
+    @Column(nullable = false)
     private String content;
     private String imageUrl;
     private int likes;
@@ -41,7 +43,7 @@ public class Message {
     @JoinColumn(name = "user_email")
     UserAccount user;
 
-    @Column(name = "registered_at")
+    @Column(nullable = false, updatable = false, name = "registered_at")
     private LocalDateTime registeredAt;
 
     @Column(name = "updated_at")
@@ -50,7 +52,7 @@ public class Message {
     @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
 
-    @Column(name = "expired_at")
+    @Column(name = "expired_at", nullable = false)
     private LocalDateTime expiredAt;
 
     @PrePersist
