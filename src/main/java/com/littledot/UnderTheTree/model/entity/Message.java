@@ -3,6 +3,7 @@ package com.littledot.UnderTheTree.model.entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -33,17 +34,19 @@ public class Message {
 
     private String imageUrl;
 
+    @ColumnDefault("0")
     private int likes;
 
     @OneToMany
+    @JoinColumn(name = "message_id")
     private Set<Interest> interests = new LinkedHashSet<>();
 
     @ToString.Exclude
     @OrderBy("registeredAt DESC")
-    @OneToMany(mappedBy = "message", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "message", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<MessageComment> messageComments = new LinkedHashSet<>();
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "user_email")
     UserAccount user;
 

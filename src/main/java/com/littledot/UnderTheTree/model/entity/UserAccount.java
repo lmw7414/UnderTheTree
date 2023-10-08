@@ -35,6 +35,11 @@ public class UserAccount {
     private int chance;
 
     @ToString.Exclude
+    @OrderBy("registeredAt DESC")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Message> messages = new LinkedHashSet<>();
+
+    @ToString.Exclude
     @JoinTable(
             name = "user_interests",  //연결테이블 이름
             joinColumns = @JoinColumn(name = "user_email"),
