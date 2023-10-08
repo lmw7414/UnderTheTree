@@ -9,6 +9,8 @@ import javax.persistence.*;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Table(name = "message")
 @Entity
@@ -25,6 +27,9 @@ public class Message {
     private String content;
     private String imageUrl;
     private int likes;
+
+    @OneToMany
+    private Set<Interest> interests = new LinkedHashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "user_email")
