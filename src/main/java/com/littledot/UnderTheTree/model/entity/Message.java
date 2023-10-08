@@ -2,6 +2,7 @@ package com.littledot.UnderTheTree.model.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -30,6 +31,11 @@ public class Message {
 
     @OneToMany
     private Set<Interest> interests = new LinkedHashSet<>();
+
+    @ToString.Exclude
+    @OrderBy("registeredAt DESC")
+    @OneToMany(mappedBy = "message", cascade = CascadeType.ALL)
+    private Set<MessageComment> messageComments = new LinkedHashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "user_email")
