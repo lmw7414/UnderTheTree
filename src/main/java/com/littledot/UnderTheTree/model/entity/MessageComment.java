@@ -16,11 +16,11 @@ public class MessageComment {
     private Long id;
     private String content;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "message_id")
     private Message message;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "user_email")
     private UserAccount user;
 
@@ -30,7 +30,7 @@ public class MessageComment {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    public static MessageComment of (String content, Message message) {
+    public static MessageComment of(String content, Message message) {
         MessageComment messageComment = new MessageComment();
         messageComment.setContent(content);
         messageComment.setMessage(message);
