@@ -15,9 +15,12 @@ public class Interest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String major;
+
     @Column(unique = true, nullable = false)
     private String name;
+
     @ManyToMany(mappedBy = "interests")
     private Set<UserAccount> users = new LinkedHashSet<>();
 
