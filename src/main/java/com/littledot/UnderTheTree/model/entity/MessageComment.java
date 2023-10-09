@@ -15,7 +15,7 @@ public class MessageComment {
     @Id
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 512)
     private String content;
 
     @ManyToOne(optional = false)

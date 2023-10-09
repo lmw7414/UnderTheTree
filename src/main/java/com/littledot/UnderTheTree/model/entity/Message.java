@@ -26,10 +26,10 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 512)
     private String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1024)
     private String content;
 
     private String imageUrl;
