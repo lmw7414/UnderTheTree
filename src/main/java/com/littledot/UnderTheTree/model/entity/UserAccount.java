@@ -18,7 +18,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@SQLDelete(sql = "UPDATE user_account SET deleted_at NOW() where email=?")
+@SQLDelete(sql = "UPDATE user_account SET deleted_at = NOW() where email=?")
 @Where(clause = "deleted_at is NULL")
 public class UserAccount {
 
